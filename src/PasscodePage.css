@@ -1,0 +1,187 @@
+.passcode-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at top, #3a0d18 0%, #1a0509 70%, #0d0203 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #f3d9c9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.passcode-glow {
+  position: absolute;
+  top: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 130, 90, 0.25), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+/* 🖼️ Little tilted "polaroid" preview of the cake reveal */
+.passcode-photo-frame {
+  background: #fdfaf4;
+  padding: 14px 14px 30px;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transform: rotate(-3deg);
+  margin-bottom: 26px;
+}
+
+.mini-cake-scene {
+  width: 160px;
+  height: 110px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #2a0a12, #4a1220);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.mini-candle-row {
+  position: absolute;
+  bottom: 46px;
+  display: flex;
+  gap: 14px;
+}
+
+.mini-candle {
+  width: 3px;
+  height: 18px;
+  background: #fff3d6;
+  border-radius: 2px;
+  position: relative;
+}
+
+.mini-flame {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 10px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle, #fff3b0 0%, #ffb238 55%, #ff7a1a 100%);
+  box-shadow: 0 0 10px 3px rgba(255, 150, 40, 0.65);
+  animation: miniFlicker 0.5s infinite alternate;
+}
+
+@keyframes miniFlicker {
+  from { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.85; }
+  to   { transform: translateX(-50%) scale(1.15) rotate(2deg); opacity: 1; }
+}
+
+.mini-cake {
+  width: 120px;
+  height: 44px;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(180deg, #ff8fb8, #e85394);
+  box-shadow: inset 0 -6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.photo-caption {
+  text-align: center;
+  font-family: "Segoe Script", cursive;
+  color: #222;
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+}
+
+/* 🔒 Lock + title */
+.lock-icon {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 8px rgba(255, 180, 120, 0.5));
+}
+
+.passcode-title {
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  margin: 0 0 4px;
+  color: #f6e2cf;
+}
+
+.passcode-hint {
+  font-size: 0.8rem;
+  color: rgba(243, 217, 201, 0.55);
+  margin-bottom: 22px;
+}
+
+/* 🔢 Code boxes */
+.code-boxes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.code-box {
+  width: 26px;
+  height: 34px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 200, 170, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.code-box.filled {
+  background: rgba(255, 150, 100, 0.25);
+  border-color: rgba(255, 170, 120, 0.8);
+}
+
+.code-boxes.shake {
+  animation: shakeBoxes 0.4s;
+}
+
+@keyframes shakeBoxes {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+/* ⌨️ Keypad */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 14px;
+}
+
+.key {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f6e2cf;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.key:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.key:active {
+  transform: scale(0.92);
+  background: rgba(255, 150, 100, 0.35);
+}
+
+.key-action {
+  font-size: 1rem;
+  opacity: 0.75;
+}
